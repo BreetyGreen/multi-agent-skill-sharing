@@ -14,6 +14,10 @@
   <img src="https://img.shields.io/badge/verified-2026--07-97C459" alt="verified 2026-07">
 </p>
 
+<p align="center">
+  <strong>English</strong> · <a href="README.zh-CN.md">简体中文</a>
+</p>
+
 If you run more than one AI coding tool on the same project — say **Claude Code**,
 **Codex CLI**, and **Cursor** — you've probably hit this wall:
 
