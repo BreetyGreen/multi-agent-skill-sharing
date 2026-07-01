@@ -1,6 +1,18 @@
-# multi-agent-skill-sharing
+<p align="center">
+  <img src="assets/logo-wordmark.svg" alt="multi-agent-skill-sharing" width="420">
+</p>
 
-> Install a skill **once** and make every AI coding agent on the same repo able to use it.
+<h1 align="center">multi-agent-skill-sharing</h1>
+
+<p align="center">
+  <em>Install a skill <strong>once</strong> and make every AI coding agent on the same repo able to use it.</em>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/license-MIT-3B6D11" alt="MIT License">
+  <img src="https://img.shields.io/badge/agents-5%20supported-639922" alt="5 agents supported">
+  <img src="https://img.shields.io/badge/verified-2026--07-97C459" alt="verified 2026-07">
+</p>
 
 If you run more than one AI coding tool on the same project — say **Claude Code**,
 **Codex CLI**, and **Cursor** — you've probably hit this wall:
@@ -107,6 +119,26 @@ multi-agent-skill-sharing/
 └── docs/
     └── INSTALL.md            # per-tool install + Windows notes
 ```
+
+## Related projects
+
+This repo is deliberately **narrow**: it teaches the *mechanics* of making one
+skill work across agents. If you're looking for large catalogs of ready-made
+skills, these excellent projects are worth your time:
+
+| Project | Stars | What it is |
+|---------|-------|------------|
+| [VoltAgent/awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills) | 20k+ | Cross-agent catalog (Claude, Codex, Gemini, Cursor) — the biggest curated list |
+| [openai/skills](https://github.com/openai/skills) | 9k+ | OpenAI's official Codex skills directory |
+| [vercel-labs/skills](https://github.com/vercel-labs/skills) | 6k+ | Vercel's official skills + CLI tooling |
+| [anthropics/skills](https://github.com/anthropics/skills) | — | Anthropic's official skills for Claude Code |
+| [agentskills/agentskills](https://github.com/agentskills/agentskills) | 10k+ | The open **SKILL.md** specification / standard |
+| [JackyST0/awesome-agent-skills](https://github.com/JackyST0/awesome-agent-skills) | — | Cross-platform list with a one-click installer + online search |
+
+> Those tell you **what** skills exist. This repo tells you **how** to make any
+> one of them shared and switchable across the tools you actually run.
+
+---
 
 ## Caveat
 
