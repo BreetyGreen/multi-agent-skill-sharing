@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo-wordmark.svg" alt="multi-agent-skill-sharing" width="420">
+  <img src="assets/logo-wordmark.png" alt="multi-agent-skill-sharing" width="420">
 </p>
 
 <h1 align="center">multi-agent-skill-sharing</h1>
