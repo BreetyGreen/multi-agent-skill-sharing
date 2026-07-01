@@ -86,6 +86,19 @@ python3 /path/to/multi-agent-skill-sharing/scripts/distribute.py \
   --dest .
 ```
 
+Preview first (writes nothing), or target only the agents you actually run:
+
+```bash
+# see exactly what would be written, without touching disk
+python3 .../scripts/distribute.py --src ./skill --dest . --dry-run
+
+# only fan out to Claude Code + Codex, skip the rest
+python3 .../scripts/distribute.py --src ./skill --dest . --agents claude,codex
+```
+
+Available `--agents` selectors: `claude`, `codex`, `agents`, `cline`
+(default: `claude,codex,agents`).
+
 Then commit the new `.claude/skills`, `.agents/skills`, `.codex/skills`
 directories so the skill travels with Git.
 

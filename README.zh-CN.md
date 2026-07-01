@@ -77,6 +77,19 @@ python3 /path/to/multi-agent-skill-sharing/scripts/distribute.py \
   --dest .
 ```
 
+可以先预览（不写入任何文件），或只分发给你实际在用的 agent：
+
+```bash
+# 只打印将要写入的内容，不动磁盘
+python3 .../scripts/distribute.py --src ./skill --dest . --dry-run
+
+# 只铺给 Claude Code + Codex，跳过其余
+python3 .../scripts/distribute.py --src ./skill --dest . --agents claude,codex
+```
+
+`--agents` 可选值：`claude`、`codex`、`agents`、`cline`
+（默认：`claude,codex,agents`）。
+
 然后把新生成的 `.claude/skills`、`.agents/skills`、`.codex/skills`
 目录提交进 Git，技能就能随仓库一起走了。
 
