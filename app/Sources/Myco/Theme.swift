@@ -1,6 +1,6 @@
 import SwiftUI
 
-// 从 HTML 原型精修版平移的墨绿品牌体系（skillshare → Conduit）。
+// 从 HTML 原型精修版平移的墨绿品牌体系（Myco）。
 // 官方 token：#16171D 墨黑 / #639922 品牌绿 / #3B6D11 深绿 /
 //            #C0DD97 #EAF3DE 浅绿 / #5F5E5A 暖灰。
 

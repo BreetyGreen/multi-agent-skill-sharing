@@ -40,9 +40,9 @@ final class AppStore: ObservableObject {
         }
     }
 
-    /// 从仓库 skill/ 目录读取可分发的 SKILL.md（真实存在的）。
+    /// 从随附的 skills/ 目录读取可分发的 SKILL.md（真实存在的）。
     static func loadShareableSkills() -> [ShareableSkill] {
-        let root = PythonBridge.shared.resourceRoot.appendingPathComponent("skill")
+        let root = PythonBridge.shared.resourceRoot.appendingPathComponent("skills")
         var out: [ShareableSkill] = []
         let fm = FileManager.default
         if let items = try? fm.contentsOfDirectory(at: root, includingPropertiesForKeys: nil) {

@@ -1,7 +1,7 @@
 import Foundation
 
 /// 只读扫描本机 5 个 agent 的安装状态与会话数。
-/// 路径与 scripts/chatsync/readers 完全一致，绝不写入任何 agent 存储。
+/// 路径与 engine/chatsync/readers 完全一致，绝不写入任何 agent 存储。
 struct AgentDetector {
     static let home = FileManager.default.homeDirectoryForCurrentUser
 

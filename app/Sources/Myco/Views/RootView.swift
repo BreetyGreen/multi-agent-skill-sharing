@@ -38,12 +38,12 @@ struct RootView: View {
             BrandMark(size: 26)
             VStack(alignment: .leading, spacing: 1) {
                 HStack(spacing: 0) {
-                    Text("con").font(.system(size: 16, weight: .semibold))
+                    Text("my").font(.system(size: 16, weight: .semibold))
                         .foregroundColor(p.text)
-                    Text("duit").font(.system(size: 16, weight: .semibold))
+                    Text("co").font(.system(size: 16, weight: .semibold))
                         .foregroundColor(p.brand)
                 }
-                Text("one workspace, every agent")
+                Text("the mycelial layer for your agents")
                     .font(.system(size: 10.5)).tracking(0.3)
                     .foregroundColor(p.text3)
             }

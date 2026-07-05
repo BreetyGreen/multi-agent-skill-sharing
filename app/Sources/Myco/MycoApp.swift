@@ -1,19 +1,19 @@
 import SwiftUI
 import AppKit
 
-// Conduit — one workspace, every agent.
+// Myco — the mycelial layer for your AI agents.
 // 纯菜单栏应用（LSUIElement）：NSStatusItem 托盘图标 + NSPopover 承载 SwiftUI 面板。
 // 用 AppKit 承载而非原生 MenuBarExtra，是为了完全控制 popover 尺寸/圆角/材质，
 // 精确复刻已定稿的 HTML 原型视觉。
 
 @main
-struct ConduitMain {
+struct MycoMain {
     static func main() {
         let app = NSApplication.shared
         let delegate = AppDelegate()
         app.delegate = delegate
         // 预览模式：用普通窗口展示面板，便于截图/演示；正常模式为纯菜单栏应用。
-        if ProcessInfo.processInfo.environment["CONDUIT_PREVIEW"] != nil {
+        if ProcessInfo.processInfo.environment["MYCO_PREVIEW"] != nil {
             app.setActivationPolicy(.regular)
         } else {
             app.setActivationPolicy(.accessory)   // 无 Dock 图标、无主窗口
@@ -49,13 +49,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         store.refresh()
 
         // 预览时可指定初始 tab（截图用）
-        if let t = ProcessInfo.processInfo.environment["CONDUIT_TAB"],
+        if let t = ProcessInfo.processInfo.environment["MYCO_TAB"],
            let tab = AppStore.Tab(rawValue: t) {
             store.tab = tab
         }
 
         // 预览模式：额外开一个普通窗口显示面板（便于截图/演示）
-        if ProcessInfo.processInfo.environment["CONDUIT_PREVIEW"] != nil {
+        if ProcessInfo.processInfo.environment["MYCO_PREVIEW"] != nil {
             let win = NSWindow(
                 contentRect: NSRect(x: 0, y: 0, width: 396, height: 640),
                 styleMask: [.titled, .closable, .fullSizeContentView],
@@ -71,10 +71,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             previewWindow = win
 
             // 自渲染截图：等 agent 异步检测 + 布局完成后，把根视图输出成 PNG。
-            if let shot = ProcessInfo.processInfo.environment["CONDUIT_SHOT"] {
+            if let shot = ProcessInfo.processInfo.environment["MYCO_SHOT"] {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
                     self.snapshot(view: win.contentView!, to: shot)
-                    if ProcessInfo.processInfo.environment["CONDUIT_SHOT_QUIT"] != nil {
+                    if ProcessInfo.processInfo.environment["MYCO_SHOT_QUIT"] != nil {
                         NSApp.terminate(nil)
                     }
                 }

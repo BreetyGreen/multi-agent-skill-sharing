@@ -12,10 +12,10 @@ Usage
     python3 distribute.py --src /path/to/skills-source --dest .
 
     # Only target specific agents:
-    python3 distribute.py --src ./skill --dest . --agents claude,codex,agents
+    python3 distribute.py --src ./skills --dest . --agents claude,codex,agents
 
     # Preview without writing:
-    python3 distribute.py --src ./skill --dest . --dry-run
+    python3 distribute.py --src ./skills --dest . --dry-run
 
 Source layout expected
 ----------------------

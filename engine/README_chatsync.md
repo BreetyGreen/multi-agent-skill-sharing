@@ -21,19 +21,19 @@
 
 ```bash
 # 导出全部可用来源到 ./chat-archive
-python3 scripts/sync_chats.py
+python3 engine/sync_chats.py
 
 # 只选部分来源、指定输出目录
-python3 scripts/sync_chats.py --agents claude,workbuddy,codex --out ./chat-archive
+python3 engine/sync_chats.py --agents claude,workbuddy,codex --out ./chat-archive
 
 # 预览将导出什么，不落盘
-python3 scripts/sync_chats.py --dry-run
+python3 engine/sync_chats.py --dry-run
 
 # 只导出某日期之后的会话
-python3 scripts/sync_chats.py --since 2026-06-01
+python3 engine/sync_chats.py --since 2026-06-01
 
 # 额外生成离线 HTML 时间线（默认最多内嵌 300 个最新会话）
-python3 scripts/sync_chats.py --html --html-max 300
+python3 engine/sync_chats.py --html --html-max 300
 ```
 
 纯标准库，跨平台（macOS / Linux / Windows），无需安装任何依赖。
@@ -93,12 +93,12 @@ Block            { kind(text|tool_use|tool_result|reasoning), text, raw }
 
 ```bash
 # 1) 先列出候选会话（可按来源/关键词过滤）
-python3 scripts/handoff_chat.py --list
-python3 scripts/handoff_chat.py --list --agents codex --search 简历
+python3 engine/handoff_chat.py --list
+python3 engine/handoff_chat.py --list --agents codex --search 简历
 
 # 2) 选一个（用 SHORTID / 完整 id / 标题子串），默认「既存 .md 文件又进剪贴板」
-python3 scripts/handoff_chat.py --session 019f078f
-python3 scripts/handoff_chat.py --session "简历" --agents codex
+python3 engine/handoff_chat.py --session 019f078f
+python3 engine/handoff_chat.py --session "简历" --agents codex
 
 # 3) 打开 B（如 WorkBuddy）→ 新开对话 → 粘贴(Cmd/Ctrl+V) → 发送 → 继续聊
 ```
@@ -131,13 +131,13 @@ toward the active thread goal…" 等**运行时脚手架**都会被剥掉，交
 
 生成的 `chat-archive/` 包含你**真实的历史对话内容**（可能含代码、密钥片段、私人信息）。
 在 `git commit` 或分享前请自行审阅。如果不希望进版本库，把 `chat-archive/` 加进
-`.gitignore` 即可——工具本身（`scripts/`）不含任何个人数据，可放心提交。
+`.gitignore` 即可——工具本身（`engine/`）不含任何个人数据，可放心提交。
 `handoff_chat.py` 生成的 `handoff-*.md` 同理，是你的私人对话，默认已 git-ignore。
 
 ## 模块结构
 
 ```
-scripts/
+engine/
 ├── sync_chats.py               # CLI 入口（归档 + 离线时间线）
 ├── handoff_chat.py             # CLI 入口（会话接力：A→B 续聊）
 └── chatsync/

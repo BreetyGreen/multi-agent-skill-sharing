@@ -2,15 +2,15 @@
 import PackageDescription
 
 let package = Package(
-    name: "Conduit",
+    name: "Myco",
     platforms: [.macOS(.v13)],
     products: [
-        .executable(name: "Conduit", targets: ["Conduit"])
+        .executable(name: "Myco", targets: ["Myco"])
     ],
     targets: [
         .executableTarget(
-            name: "Conduit",
-            path: "Sources/Conduit"
+            name: "Myco",
+            path: "Sources/Myco"
         )
     ]
 )

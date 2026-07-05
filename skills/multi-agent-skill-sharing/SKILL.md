@@ -142,7 +142,7 @@ Copy-Item -Recurse -Force .\.claude\skills\* .\.codex\skills\
 
 When distributing from a source repo of many skills, use each skill's
 frontmatter `name` as its subdirectory name. The bundled
-`scripts/distribute.py` automates this cross-platform.
+`engine/distribute.py` automates this cross-platform.
 
 ### 5. Verify placement
 

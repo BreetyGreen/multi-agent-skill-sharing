@@ -44,9 +44,9 @@ def check(skill_md: Path) -> list[str]:
 
 
 def main() -> int:
-    skill_files = sorted((REPO_ROOT / "skill").rglob("SKILL.md"))
+    skill_files = sorted((REPO_ROOT / "skills").rglob("SKILL.md"))
     if not skill_files:
-        print("error: no SKILL.md found under skill/", file=sys.stderr)
+        print("error: no SKILL.md found under skills/", file=sys.stderr)
         return 1
 
     all_errors: list[str] = []

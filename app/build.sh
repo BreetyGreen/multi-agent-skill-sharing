@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
-# build.sh — 编译 Conduit 并组装成自包含、可分发的纯菜单栏 .app
+# build.sh — 编译 Myco 并组装成自包含、可分发的纯菜单栏 .app
 #            （无需 Xcode，仅 Command Line Tools）。
 #
-# 产物 Conduit.app 是自包含的：Python 脚本 + 源 skill 都打进 Contents/Resources/，
-# 双击即可运行，不依赖 CONDUIT_REPO 环境变量或任何外部仓库路径。
+# 产物 Myco.app 是自包含的：Python 引擎 + 随附 skills 都打进 Contents/Resources/，
+# 双击即可运行，不依赖 MYCO_REPO 环境变量或任何外部仓库路径。
 set -euo pipefail
 
 cd "$(dirname "$0")"
-APP_NAME="Conduit"
+APP_NAME="Myco"
 BUILD_DIR=".build/release"
 APP_BUNDLE="$APP_NAME.app"
 CONTENTS="$APP_BUNDLE/Contents"
 REPO_ROOT="$(cd .. && pwd)"
-VERSION="${CONDUIT_VERSION:-0.1.0}"
+VERSION="${MYCO_VERSION:-0.2.0}"
 
 echo "==> [1/6] swift build -c release"
 swift build -c release
@@ -22,17 +22,17 @@ rm -rf "$APP_BUNDLE"
 mkdir -p "$CONTENTS/MacOS" "$CONTENTS/Resources"
 cp "$BUILD_DIR/$APP_NAME" "$CONTENTS/MacOS/$APP_NAME"
 
-echo "==> [3/6] 打包脚本资源进 bundle（自包含关键）"
-# 只拷运行时真正需要的：Python 脚本包 + 源 skill。排除缓存。
-mkdir -p "$CONTENTS/Resources/scripts" "$CONTENTS/Resources/skill"
+echo "==> [3/6] 打包引擎资源进 bundle（自包含关键）"
+# 只拷运行时真正需要的：Python 引擎包 + 随附 skills。排除缓存。
+mkdir -p "$CONTENTS/Resources/engine" "$CONTENTS/Resources/skills"
 rsync -a --exclude='__pycache__' --exclude='*.pyc' \
-      "$REPO_ROOT/scripts/" "$CONTENTS/Resources/scripts/"
-rsync -a "$REPO_ROOT/skill/" "$CONTENTS/Resources/skill/"
+      "$REPO_ROOT/engine/" "$CONTENTS/Resources/engine/"
+rsync -a "$REPO_ROOT/skills/" "$CONTENTS/Resources/skills/"
 
 echo "==> [4/6] 生成 .icns 应用图标（源：assets/logo-icon.png）"
 ICON_SRC="$REPO_ROOT/assets/logo-icon.png"
 if [[ -f "$ICON_SRC" ]]; then
-  ICONSET="$(mktemp -d)/Conduit.iconset"
+  ICONSET="$(mktemp -d)/Myco.iconset"
   mkdir -p "$ICONSET"
   for sz in 16 32 64 128 256 512; do
     sips -z $sz $sz "$ICON_SRC" --out "$ICONSET/icon_${sz}x${sz}.png" >/dev/null 2>&1
@@ -54,7 +54,7 @@ cat > "$CONTENTS/Info.plist" <<PLIST
 <dict>
   <key>CFBundleName</key><string>$APP_NAME</string>
   <key>CFBundleDisplayName</key><string>$APP_NAME</string>
-  <key>CFBundleIdentifier</key><string>com.conduit.menubar</string>
+  <key>CFBundleIdentifier</key><string>com.myco.app</string>
   <key>CFBundleVersion</key><string>$VERSION</string>
   <key>CFBundleShortVersionString</key><string>$VERSION</string>
   <key>CFBundlePackageType</key><string>APPL</string>
@@ -78,4 +78,4 @@ echo ""
 echo "==> 完成: $(pwd)/$APP_BUNDLE  (v$VERSION, 自包含)"
 echo "    直接运行:   open \"$(pwd)/$APP_BUNDLE\""
 echo "    安装到系统: cp -R \"$(pwd)/$APP_BUNDLE\" /Applications/"
-echo "    开发调试:   CONDUIT_REPO=\"$REPO_ROOT\" open \"$(pwd)/$APP_BUNDLE\""
+echo "    开发调试:   MYCO_REPO=\"$REPO_ROOT\" open \"$(pwd)/$APP_BUNDLE\""

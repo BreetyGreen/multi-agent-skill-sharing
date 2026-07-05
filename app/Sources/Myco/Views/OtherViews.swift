@@ -263,9 +263,9 @@ struct SettingsView: View {
             HStack(spacing: 9) {
                 BrandMark(size: 22)
                 VStack(alignment: .leading, spacing: 1) {
-                    Text("Conduit").font(.system(size: 12, weight: .semibold))
+                    Text("Myco").font(.system(size: 12, weight: .semibold))
                         .foregroundColor(p.text)
-                    Text("one workspace, every agent · v0.1")
+                    Text("the mycelial layer for your agents · v0.2")
                         .font(.system(size: 10)).foregroundColor(p.text3)
                 }
             }

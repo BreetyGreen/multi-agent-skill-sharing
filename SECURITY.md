@@ -2,10 +2,11 @@
 
 ## Scope
 
-This project ships a portable `SKILL.md` and a small, pure-standard-library
-Python distributor (`scripts/distribute.py`) that copies skill folders into
-per-agent directories. It runs locally, has no network calls, and stores no
-secrets. The realistic risk surface is small, but reports are still welcome.
+This project ships **Myco** — a native macOS menu-bar app — plus its internal,
+pure-standard-library Python engine (`engine/distribute.py` and the `chatsync`
+readers) that copies skill folders into per-agent directories and read-only
+aggregates local chat history. It runs locally, has no network calls, and stores
+no secrets. The realistic risk surface is small, but reports are still welcome.
 
 ## Supported versions
 

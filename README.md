@@ -1,56 +1,94 @@
 <p align="center">
-  <img src="assets/logo-wordmark.png" alt="multi-agent-skill-sharing" width="420">
+  <img src="assets/logo-wordmark.png" alt="Myco" width="420">
 </p>
 
-<h1 align="center">multi-agent-skill-sharing</h1>
+<h1 align="center">Myco</h1>
 
 <p align="center">
-  <em>Install a skill <strong>once</strong> and make every AI coding agent on the same repo able to use it.</em>
+  <em>The mycelial layer for your AI agents — one Mac app that shares skills,
+  hands off conversations, and unifies history across every coding agent you run.</em>
 </p>
 
 <p align="center">
   <a href="https://github.com/BreetyGreen/multi-agent-skill-sharing/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/BreetyGreen/multi-agent-skill-sharing/ci.yml?branch=master&label=CI&color=3B6D11" alt="CI status"></a>
-  <a href="https://github.com/BreetyGreen/multi-agent-skill-sharing/releases"><img src="https://img.shields.io/github/v/release/BreetyGreen/multi-agent-skill-sharing?color=639922" alt="Latest release"></a>
+  <a href="https://github.com/BreetyGreen/multi-agent-skill-sharing/releases/latest"><img src="https://img.shields.io/github/v/release/BreetyGreen/multi-agent-skill-sharing?color=639922&label=download" alt="Latest release"></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/BreetyGreen/multi-agent-skill-sharing?color=3B6D11" alt="MIT License"></a>
-  <a href="https://github.com/BreetyGreen/multi-agent-skill-sharing/stargazers"><img src="https://img.shields.io/github/stars/BreetyGreen/multi-agent-skill-sharing?style=flat&color=97C459" alt="Stars"></a>
-  <img src="https://img.shields.io/badge/agents-5%20supported-639922" alt="5 agents supported">
+  <img src="https://img.shields.io/badge/platform-macOS%2013%2B-639922" alt="macOS 13+">
+  <img src="https://img.shields.io/badge/agents-5%20supported-97C459" alt="5 agents supported">
 </p>
 
 <p align="center">
   <strong>English</strong> · <a href="README.zh-CN.md">简体中文</a>
 </p>
 
-If you run more than one AI coding tool on the same project — say **Claude Code**,
-**Codex CLI**, and **Cursor** — you've probably hit this wall:
+Mushrooms are just the fruit; the real organism is the **mycelium** underground —
+a living network that connects an entire forest and lets every tree share
+nutrients and signals. Your AI coding agents are that forest: **Claude Code**,
+**Codex CLI**, **Cursor**, **Gemini CLI**, **Cline** — each powerful, each
+completely walled off from the others.
 
-- You install a skill and only *one* tool can find it.
-- You try `/design` in Codex like you do in Claude Code, and nothing happens.
-- You put the skill in `~/.claude/skills/`, switch machines, and it's gone.
+**Myco is the mycelium.** A single native macOS menu-bar app that quietly
+connects your agents so they can share what they know:
 
-The uncomfortable truth: **there is no shared skills directory across agents.**
-"Install once, everything sees it" is literally false. Each product reads skills
-from a *different* directory, and each has a *different* invocation syntax.
+- 🟢 **Share skills** — write one `SKILL.md` and fan it out to every agent's
+  repo directory, so a skill you teach one tool works in all of them.
+- 🔵 **Hand off conversations** — pick up a chat from one agent and continue it
+  in another, in a *legitimately new session* (no forged IDs, no fake history).
+- 🟣 **Unify history** — read every agent's local transcripts into one neutral,
+  searchable, offline timeline you can browse and back up.
 
-This repo is a portable **`SKILL.md`** (plus a helper script) that encodes the
-correct way to make a skill genuinely shared and switchable across tools:
-
-1. Install it into **per-agent directories inside the repository**, so it
-   travels with Git.
-2. Document the **per-tool invocation syntax** so people actually use it right.
-
-It has since grown two more layers that solve the *other* half of the
-multi-agent problem — your **conversations** are just as siloed as your skills:
-
-| Layer | What it does | Entry point |
-|-------|--------------|-------------|
-| **① Share skills** | One `SKILL.md` → every agent's repo dir, then `git commit`. | [`scripts/distribute.py`](scripts/distribute.py) |
-| **② Sync & hand off chats** | Read all agents' local histories into one neutral archive; package one chat so another agent can *legitimately* continue it. | [`scripts/sync_chats.py`](scripts/sync_chats.py), [`scripts/handoff_chat.py`](scripts/handoff_chat.py) |
-| **③ Conduit menu-bar app** | A native macOS tray app that wraps all of the above behind a UI. | [`app/`](app/) |
-
+All of it from the menu bar. No command line, nothing to configure.
 
 ---
 
-## Why it's tricky (the 30-second version)
+## Install
+
+<p align="center">
+  <a href="https://github.com/BreetyGreen/multi-agent-skill-sharing/releases/latest">
+    <img src="https://img.shields.io/badge/⬇%20Download%20Myco-.dmg-639922?style=for-the-badge" alt="Download Myco">
+  </a>
+</p>
+
+1. Download **`Myco-x.y.z.dmg`** from the
+   [latest release](https://github.com/BreetyGreen/multi-agent-skill-sharing/releases/latest).
+2. Open the DMG and drag **`Myco.app`** into **Applications**.
+3. First launch: because the app is ad-hoc signed (not notarized), macOS
+   Gatekeeper will hesitate. **Right-click `Myco.app` → Open → Open** once, and
+   you're set.
+
+Myco then lives in your menu bar (the stacked-tiles icon at the top-right).
+Click it and everything is one panel away.
+
+> **Requirements:** macOS 13+. That's it — Myco is fully self-contained and uses
+> the `python3` that already ships with macOS. Nothing else to install.
+
+---
+
+## What's inside the app
+
+Myco opens to five tabs, each a capability rather than a separate tool:
+
+| Tab | What it does |
+|-----|--------------|
+| **总览 / Home** | At-a-glance view of which agents are installed on this Mac and how many sessions each holds. |
+| **共享 / Share** | Pick a skill, choose which agents to fan it out to (`.claude` / `.codex` / `.agents` / `.cline`), preview, then write. Commit and the whole team is in sync. |
+| **接力 / Relay** | Pick a past conversation and package it as paste-ready text to continue in a *different* agent. |
+| **历史 / History** | The merged, searchable timeline across all detected agents. |
+| **设置 / Settings** | Theme, agent toggles, work directory. |
+
+Everything is **read-only by design**: Myco never writes back into any agent's
+storage. Agent databases (Cursor / Antigravity SQLite) are opened in immutable
+read-only mode; hand-off and archive operations only ever produce text.
+
+---
+
+## Why this problem exists (the 30-second version)
+
+If you run more than one AI coding tool on the same project, you've hit both walls:
+
+**Skills are siloed.** There is no shared skills directory across agents.
+"Install once, everything sees it" is literally false — each product reads
+skills from a *different* repo directory:
 
 | Agent | Repo-level dir (travels with Git) | How you invoke it |
 |-------|-----------------------------------|-------------------|
@@ -60,183 +98,73 @@ multi-agent problem — your **conversations** are just as siloed as your skills
 | **Gemini CLI** | `.agents/skills/` | name it in the prompt |
 | **Cline** | `.cline/skills/`, `.clinerules/skills/`, or `.claude/skills/` | name it (experimental toggle) |
 
-> 💡 `.agents/` is emerging as the **cross-agent standard** repo path — Codex,
-> Gemini CLI, and Cursor all accept it. If you can only keep one path, that's
-> the safest bet.
+**Conversations are siloed too.** Each tool keeps its transcripts in its own
+place and format — JSONL here, SQLite blobs there — so context you built up in
+one agent is invisible to the next.
 
-Full details, pitfalls, and step-by-step instructions live in
-[`skill/multi-agent-skill-sharing/SKILL.md`](skill/multi-agent-skill-sharing/SKILL.md).
-
----
-
-## Install *this* skill (self-demonstrating)
-
-This skill practises what it preaches — here's how to make it available to your
-own agents.
-
-### Option A — one agent, quick try
-
-Copy the skill folder into whichever agent you use:
-
-```bash
-# Claude Code (user-level)
-cp -R skill/multi-agent-skill-sharing ~/.claude/skills/
-
-# Codex CLI (user-level)
-cp -R skill/multi-agent-skill-sharing ~/.codex/skills/
-```
-
-### Option B — share it across all agents on a project (recommended)
-
-From inside your target project, run the bundled distributor. It fans the skill
-out into every agent's repo-level directory and is cross-platform:
-
-```bash
-# from your project root
-python3 /path/to/multi-agent-skill-sharing/scripts/distribute.py \
-  --src /path/to/multi-agent-skill-sharing/skill \
-  --dest .
-```
-
-Preview first (writes nothing), or target only the agents you actually run:
-
-```bash
-# see exactly what would be written, without touching disk
-python3 .../scripts/distribute.py --src ./skill --dest . --dry-run
-
-# only fan out to Claude Code + Codex, skip the rest
-python3 .../scripts/distribute.py --src ./skill --dest . --agents claude,codex
-```
-
-Available `--agents` selectors: `claude`, `codex`, `agents`, `cline`
-(default: `claude,codex,agents`).
-
-Then commit the new `.claude/skills`, `.agents/skills`, `.codex/skills`
-directories so the skill travels with Git.
-
-See [`docs/INSTALL.md`](docs/INSTALL.md) for per-tool details and Windows steps.
+Myco knows all of these locations and formats, and bridges them for you. That's
+the whole point: you shouldn't have to memorize this table — the app does.
 
 ---
 
-## How to use it, once installed
+## For contributors — the engine under the hood
 
-Just describe your situation to your agent, e.g.:
+Myco's UI is a thin SwiftUI shell. The actual work is done by a small,
+**pure-Python-stdlib** engine (in [`engine/`](engine/)) that the app calls via
+`Process`. You normally never see it — but if you want to hack on Myco, build it
+from source, or script these capabilities headlessly, it's all there:
 
-> "I use Codex and Claude Code on this repo — make this skill usable in both."
+| Engine module | Powers | 
+|---------------|--------|
+| [`engine/distribute.py`](engine/distribute.py) | skill fan-out (Share tab) |
+| [`engine/sync_chats.py`](engine/sync_chats.py) | history aggregation (History tab) |
+| [`engine/handoff_chat.py`](engine/handoff_chat.py) | conversation hand-off (Relay tab) |
+| [`engine/chatsync/`](engine/chatsync/) | canonical message model + per-agent readers + exporters |
 
-or ask it the question that triggers the skill:
-
-> "Why can only Claude Code use this skill?"
-
-The skill walks the agent through detecting your tools, distributing the skill
-into the right directories, writing routing notes into `AGENTS.md`, and
-reminding you to commit.
-
----
-
-## ② Sync & hand off conversations across agents
-
-Skills aren't the only thing that's siloed — your **chat histories** are too.
-Each tool keeps its transcripts in its own place and its own format:
-
-| Agent | Where its history lives | Format |
-|-------|-------------------------|--------|
-| **Claude Code** | `~/.claude/projects/**/*.jsonl` | JSONL |
-| **WorkBuddy** | `~/.workbuddy/**` | JSONL |
-| **Codex CLI** | `~/.codex/sessions/**/*.jsonl` | JSONL |
-| **Cursor** | `state.vscdb` (SQLite) | SQLite blobs |
-| **Antigravity** | workspace SQLite stores | SQLite |
-
-Two read-only tools bridge them (both **pure Python stdlib**, nothing to install):
-
-**`sync_chats.py`** — read every agent's local history into one neutral,
-searchable archive plus an offline HTML timeline:
-
-```bash
-# aggregate all detected agents into ./chat-archive + a merged HTML timeline
-python3 scripts/sync_chats.py --out ./chat-archive
-```
-
-**`handoff_chat.py`** — package *one* conversation into paste-ready text so a
-different agent can continue it in a **legitimately new session** (no forged
-IDs, no fake history injection):
-
-```bash
-# turn one Codex session into a hand-off block you can paste into Claude Code
-python3 scripts/handoff_chat.py --session <id> --to claude
-```
-
-Design notes and the canonical message model live in
-[`docs/V2_CHAT_SYNC_DESIGN.md`](docs/V2_CHAT_SYNC_DESIGN.md) and
-[`scripts/README_chatsync.md`](scripts/README_chatsync.md).
-
----
-
-## ③ Conduit — the menu-bar app
-
-<p align="center">
-  <em>one workspace, every agent</em>
-</p>
-
-**Conduit** is a native macOS menu-bar app that wraps all of the above behind a
-clean UI — share skills, hand off chats, and browse a unified history without
-touching the command line.
-
-- **Native & tiny** — SwiftUI + AppKit (`NSStatusItem` tray + `NSPopover`),
-  builds with **Command Line Tools only, no Xcode required**.
-- **Read-only by design** — agent detection and history reads never mutate your
-  data; SQLite is opened `immutable=1&mode=ro`.
-- **Reuses the Python core** — the UI just calls the same
-  `distribute.py` / `sync_chats.py` / `handoff_chat.py` scripts via `Process`.
-
-### Install (pre-built)
-
-Download `Conduit-x.y.z.dmg` from the
-[Releases page](https://github.com/BreetyGreen/multi-agent-skill-sharing/releases),
-open it, and drag **Conduit.app** into **Applications**. It's ad-hoc signed, so
-on first launch use **right-click → Open** to get past Gatekeeper.
-
-### Build from source
+Build the app from source (Command Line Tools only, **no Xcode**):
 
 ```bash
 cd app
-./build.sh              # swift build -c release + assemble Conduit.app + icns + ad-hoc sign
+./build.sh              # swift build -c release → assembles self-contained Myco.app
 ./package_dmg.sh        # (optional) produce a distributable .dmg
-open Conduit.app
+open Myco.app
 ```
 
-See [`app/README.md`](app/README.md) for the full architecture, the
-debug/screenshot env-var switches, and the source layout.
+Architecture, env-var switches, and source layout: [`app/README.md`](app/README.md).
+The portable skill this app ships and distributes lives in
+[`skills/multi-agent-skill-sharing/SKILL.md`](skills/multi-agent-skill-sharing/SKILL.md);
+its design notes are in [`docs/`](docs/).
 
 ---
 
 ## Repository layout
 
 ```
-multi-agent-skill-sharing/
+multi-agent-skill-sharing/          (the Myco project)
 ├── README.md
 ├── LICENSE
-├── skill/
-│   └── multi-agent-skill-sharing/
-│       └── SKILL.md          # ① the portable skill itself
-├── scripts/
-│   ├── distribute.py         # ① cross-platform skill fan-out helper
-│   ├── sync_chats.py         # ② aggregate all agents' history → archive + HTML
-│   ├── handoff_chat.py       # ② package one chat for a legit hand-off
-│   └── chatsync/             # ② canonical model + per-agent readers + exporters
-├── app/                      # ③ Conduit — SwiftUI menu-bar app (no Xcode needed)
-├── prototype/                # ③ high-fidelity interactive HTML prototype
-└── docs/
-    ├── INSTALL.md            # per-tool install + Windows notes
-    └── V2_CHAT_SYNC_DESIGN.md
+├── app/                      # Myco — the SwiftUI menu-bar app (the product)
+│   ├── Sources/Myco/         #   native UI + PythonBridge
+│   ├── build.sh              #   assemble self-contained Myco.app
+│   └── package_dmg.sh        #   produce the installable .dmg
+├── engine/                   # Myco's internal Python engine (pure stdlib)
+│   ├── distribute.py         #   skill fan-out
+│   ├── sync_chats.py         #   history aggregation → archive + HTML
+│   ├── handoff_chat.py       #   package one chat for a legit hand-off
+│   └── chatsync/             #   canonical model + readers + exporters
+├── skills/                   # the SKILL.md payload Myco ships & distributes
+│   └── multi-agent-skill-sharing/SKILL.md
+├── prototype/                # high-fidelity interactive HTML prototype
+├── assets/                   # brand: logo, wordmark, palette
+└── docs/                     # install notes + design docs
 ```
 
+---
 
 ## Related projects
 
-This repo is deliberately **narrow**: it teaches the *mechanics* of making one
-skill work across agents. If you're looking for large catalogs of ready-made
-skills, these excellent projects are worth your time:
+Myco is about **connecting the agents you already run**, not cataloging skills.
+If you're looking for large catalogs of ready-made skills, these are excellent:
 
 | Project | Stars | What it is |
 |---------|-------|------------|
@@ -245,18 +173,17 @@ skills, these excellent projects are worth your time:
 | [vercel-labs/skills](https://github.com/vercel-labs/skills) | 6k+ | Vercel's official skills + CLI tooling |
 | [anthropics/skills](https://github.com/anthropics/skills) | — | Anthropic's official skills for Claude Code |
 | [agentskills/agentskills](https://github.com/agentskills/agentskills) | 10k+ | The open **SKILL.md** specification / standard |
-| [JackyST0/awesome-agent-skills](https://github.com/JackyST0/awesome-agent-skills) | — | Cross-platform list with a one-click installer + online search |
 
-> Those tell you **what** skills exist. This repo tells you **how** to make any
-> one of them shared and switchable across the tools you actually run.
+> Those tell you **what** skills exist. Myco connects the tools you actually run
+> so a skill — or a conversation — can move freely between them.
 
 ---
 
 ## Caveat
 
 Skill-discovery conventions across these tools **change quickly**. The paths
-here were verified **2026-07**. If a path doesn't resolve, check the tool's own
-docs — and PRs to keep the table current are very welcome.
+Myco uses were verified **2026-07**. If one doesn't resolve, check the tool's own
+docs — and PRs to keep them current are very welcome.
 
 ## Contributing
 

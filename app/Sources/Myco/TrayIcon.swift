@@ -1,6 +1,6 @@
 import AppKit
 
-/// 菜单栏托盘图标：三层错位圆角方块（Conduit「多 agent 汇聚」隐喻），
+/// 菜单栏托盘图标：三层错位圆角方块（Myco「菌丝网络汇聚多 agent」隐喻），
 /// 绘成模板图像（随系统深浅自动反色）。
 enum TrayIcon {
     static func make() -> NSImage {

@@ -6,7 +6,7 @@ as Claude Code, Codex CLI, Cursor, Gemini CLI and Cline evolve.
 
 ## The kind of PR we want most: path updates
 
-`docs/INSTALL.md` and `skill/multi-agent-skill-sharing/SKILL.md` contain a table
+`docs/INSTALL.md` and `skills/multi-agent-skill-sharing/SKILL.md` contain a table
 of where each agent discovers skills. If a tool changed its directory, added a
 new scope, or you found the docs wrong on your machine — **that's the PR.**
 
@@ -29,11 +29,11 @@ Test the distributor before and after your change:
 
 ```bash
 # dry run — prints what would be written, touches nothing
-python scripts/distribute.py --dry-run
+python engine/distribute.py --dry-run
 
 # real run into a throwaway dir
 TMP=$(mktemp -d)
-python scripts/distribute.py --dest "$TMP"
+python engine/distribute.py --dest "$TMP"
 find "$TMP" -name SKILL.md
 rm -rf "$TMP"
 ```
@@ -47,8 +47,8 @@ Adding support for another tool (Windsurf, Aider, Continue, Zed, …)? Great.
 Please update **all three** places so they stay in sync:
 
 - `docs/INSTALL.md` — a section + Windows equivalent
-- `skill/.../SKILL.md` — the compatibility table
-- `scripts/distribute.py` — the target-directory list
+- `skills/.../SKILL.md` — the compatibility table
+- `engine/distribute.py` — the target-directory list
 
 Include your verification notes (see above) in the PR description.
 

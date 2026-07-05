@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# package_dmg.sh — 把 Conduit.app 打包成可拖拽安装的 DMG。
-# 依赖 build.sh 先产出 Conduit.app。产物 Conduit-<version>.dmg 用于 GitHub Release 分发。
+# package_dmg.sh — 把 Myco.app 打包成可拖拽安装的 DMG。
+# 依赖 build.sh 先产出 Myco.app。产物 Myco-<version>.dmg 用于 GitHub Release 分发。
 set -euo pipefail
 
 cd "$(dirname "$0")"
-APP_NAME="Conduit"
+APP_NAME="Myco"
 APP_BUNDLE="$APP_NAME.app"
-VERSION="${CONDUIT_VERSION:-0.1.0}"
+VERSION="${MYCO_VERSION:-0.2.0}"
 DMG_NAME="$APP_NAME-$VERSION.dmg"
 VOL_NAME="$APP_NAME $VERSION"
 
@@ -24,14 +24,14 @@ ln -s /Applications "$STAGE/Applications"
 
 echo "==> [2/4] 写安装提示"
 cat > "$STAGE/安装说明.txt" <<TXT
-Conduit — one workspace, every agent
+Myco — the mycelial layer for your AI agents
 
-安装：把 Conduit.app 拖到右侧 Applications 文件夹即可。
+安装：把 Myco.app 拖到右侧 Applications 文件夹即可。
 
 首次打开（Gatekeeper）：
 本 App 使用 ad-hoc 签名（未经 Apple 公证）。首次打开时若被拦截：
-  方式一：右键点 Conduit.app → 打开 → 在弹窗里再点“打开”。
-  方式二：系统设置 → 隐私与安全性 → 找到 Conduit 的拦截提示 → “仍要打开”。
+  方式一：右键点 Myco.app → 打开 → 在弹窗里再点“打开”。
+  方式二：系统设置 → 隐私与安全性 → 找到 Myco 的拦截提示 → “仍要打开”。
 之后即可从菜单栏（顶部右侧的三层叠图标）正常使用。
 
 需要 macOS 13+，并已安装 Command Line Tools（系统自带 python3 即可）。

@@ -1,50 +1,77 @@
 <p align="center">
-  <img src="assets/logo-wordmark.png" alt="multi-agent-skill-sharing" width="420">
+  <img src="assets/logo-wordmark.png" alt="Myco" width="420">
 </p>
 
-<h1 align="center">multi-agent-skill-sharing</h1>
+<h1 align="center">Myco</h1>
 
 <p align="center">
-  <em>一次安装，让同一个项目里的<strong>每一个</strong> AI 编程助手都能用上同一份技能。</em>
+  <em>为你的 AI agent 编织的菌丝网络 —— 一个 Mac App，在你所有编程 agent 之间
+  共享技能、接力对话、打通历史。</em>
 </p>
 
 <p align="center">
   <a href="https://github.com/BreetyGreen/multi-agent-skill-sharing/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/BreetyGreen/multi-agent-skill-sharing/ci.yml?branch=master&label=CI&color=3B6D11" alt="CI status"></a>
-  <a href="https://github.com/BreetyGreen/multi-agent-skill-sharing/releases"><img src="https://img.shields.io/github/v/release/BreetyGreen/multi-agent-skill-sharing?color=639922" alt="Latest release"></a>
+  <a href="https://github.com/BreetyGreen/multi-agent-skill-sharing/releases/latest"><img src="https://img.shields.io/github/v/release/BreetyGreen/multi-agent-skill-sharing?color=639922&label=download" alt="Latest release"></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/BreetyGreen/multi-agent-skill-sharing?color=3B6D11" alt="MIT License"></a>
-  <a href="https://github.com/BreetyGreen/multi-agent-skill-sharing/stargazers"><img src="https://img.shields.io/github/stars/BreetyGreen/multi-agent-skill-sharing?style=flat&color=97C459" alt="Stars"></a>
-  <img src="https://img.shields.io/badge/agents-5%20supported-639922" alt="5 agents supported">
+  <img src="https://img.shields.io/badge/platform-macOS%2013%2B-639922" alt="macOS 13+">
+  <img src="https://img.shields.io/badge/agents-5%20supported-97C459" alt="5 agents supported">
 </p>
 
 <p align="center">
   <a href="README.md">English</a> · <strong>简体中文</strong>
 </p>
 
-如果你在同一个项目里同时用了不止一个 AI 编程工具 —— 比如 **Claude Code**、**Codex CLI**、**Cursor** —— 你大概率撞过这几堵墙：
+蘑菇只是果实，真正的生命体是地下的**菌丝网络（mycelium）**—— 一张活的网，把整片森林连在一起，让每棵树共享养分与信号。你的 AI 编程 agent 就是这片森林：**Claude Code**、**Codex CLI**、**Cursor**、**Gemini CLI**、**Cline** —— 每个都很强，却彼此完全隔绝。
 
-- 装了一个技能，结果只有**一个**工具能找到它。
-- 你在 Codex 里像在 Claude Code 里那样敲 `/design`，结果什么都没发生。
-- 你把技能放进 `~/.claude/skills/`，换了台电脑，它就没了。
+**Myco 就是那张菌丝网。** 一个原生 macOS 菜单栏 App，悄悄把你的 agent 连起来，让它们能共享彼此所知：
 
-一个不太舒服的真相：**这些 agent 之间根本没有一个"公用的技能目录"。**"装一次，所有工具都能看到"这句话，字面意义上是**不成立**的。每个产品从**不同的目录**读技能，而且各自的**调用语法也不一样**。
+- 🟢 **共享技能** —— 写一份 `SKILL.md`，铺进每个 agent 的仓库目录，你教会一个工具的技能，其它工具也都能用。
+- 🔵 **接力对话** —— 把某个 agent 里的一段对话，接到另一个 agent 里*用它自发的合法新会话*继续（不伪造 ID、不注入假历史）。
+- 🟣 **打通历史** —— 把每个 agent 的本地记录读成一份中性、可搜索、可离线浏览与备份的统一时间线。
 
-这个仓库提供一份可移植的 **`SKILL.md`**（外加一个辅助脚本），把"如何让一份技能真正做到跨工具共享、随时切换使用"的正确做法编码了进去：
-
-1. 把它安装到**项目仓库内部的、各 agent 各自的目录**里，这样它就能随 Git 一起走。
-2. 把**每个工具各自的调用语法**写清楚，这样大家才会用对。
-
-后来它又长出了两层，去解决多 agent 问题的*另一半* —— 你的**会话**和你的技能一样，也是各自为政、彼此隔离的：
-
-| 能力层 | 做什么 | 入口 |
-|--------|--------|------|
-| **① 共享技能** | 一份 `SKILL.md` → 铺进每个 agent 的仓库目录，`git commit` 后全队共享。 | [`scripts/distribute.py`](scripts/distribute.py) |
-| **② 同步 & 接力会话** | 把各 agent 的本地历史读成一份中性归档；把某一段对话打包，让另一个 agent *合法地*接着聊下去。 | [`scripts/sync_chats.py`](scripts/sync_chats.py)、[`scripts/handoff_chat.py`](scripts/handoff_chat.py) |
-| **③ Conduit 菜单栏 App** | 一个原生 macOS 托盘应用，把以上全部能力包进一个 UI 里。 | [`app/`](app/) |
-
+全部都在菜单栏里完成。不用命令行，无需任何配置。
 
 ---
 
-## 为什么这事儿这么绕（30 秒速览）
+## 安装
+
+<p align="center">
+  <a href="https://github.com/BreetyGreen/multi-agent-skill-sharing/releases/latest">
+    <img src="https://img.shields.io/badge/⬇%20下载%20Myco-.dmg-639922?style=for-the-badge" alt="下载 Myco">
+  </a>
+</p>
+
+1. 从[最新 Release](https://github.com/BreetyGreen/multi-agent-skill-sharing/releases/latest) 下载 **`Myco-x.y.z.dmg`**。
+2. 打开 DMG，把 **`Myco.app`** 拖进**「应用程序」**。
+3. 首次启动：因为 App 是 ad-hoc 签名（未经 Apple 公证），Gatekeeper 会拦一下。**右键点 `Myco.app` → 打开 → 打开**，一次即可。
+
+之后 Myco 就常驻在菜单栏（顶部右侧那个三层叠图标）。点开它，所有功能都在同一个面板里。
+
+> **系统要求：** macOS 13+。仅此而已 —— Myco 完全自包含，用的是 macOS 自带的 `python3`，不需要装任何其它东西。
+
+---
+
+## App 里有什么
+
+Myco 打开是五个 Tab，每个都是一种能力，而不是一个独立工具：
+
+| Tab | 做什么 |
+|-----|--------|
+| **总览** | 一眼看清这台 Mac 上装了哪些 agent、各自有多少段会话。 |
+| **共享** | 选一个技能，勾选要铺给哪些 agent（`.claude` / `.codex` / `.agents` / `.cline`），预览后写入。commit 一下，全团队同步。 |
+| **接力** | 挑一段过往对话，打包成可粘贴文本，拿到*另一个* agent 里接着聊。 |
+| **历史** | 跨所有已检测 agent 的、合并后可搜索的时间线。 |
+| **设置** | 主题、agent 开关、工作目录。 |
+
+一切都是**只读设计**：Myco 绝不写回任何 agent 的存储。agent 的数据库（Cursor / Antigravity 的 SQLite）一律以只读模式打开；接力与归档操作只产出文本。
+
+---
+
+## 为什么会有这个问题（30 秒速览）
+
+如果你在同一个项目里用了不止一个 AI 编程工具，你一定同时撞过这两堵墙：
+
+**技能是隔离的。** 这些 agent 之间根本没有一个"公用的技能目录"，"装一次，所有工具都能看到"字面意义上是不成立的 —— 每个产品从**不同的**仓库目录读技能：
 
 | Agent | 仓库级目录（随 Git 走） | 怎么调用 |
 |-------|------------------------|---------|
@@ -54,162 +81,66 @@
 | **Gemini CLI** | `.agents/skills/` | 在提示词里提名字 |
 | **Cline** | `.cline/skills/`、`.clinerules/skills/` 或 `.claude/skills/` | 提名字（实验性开关） |
 
-> 💡 `.agents/` 正在成为**跨 agent 的通用约定**目录 —— Codex、Gemini CLI、Cursor 都认它。如果你只能保留一个路径，选它最稳。
+**会话同样是隔离的。** 每个工具把记录存在各自的地方、用各自的格式 —— 这边 JSONL、那边 SQLite blob —— 你在一个 agent 里积累的上下文，对下一个 agent 完全不可见。
 
-完整细节、坑和分步说明都在
-[`skill/multi-agent-skill-sharing/SKILL.md`](skill/multi-agent-skill-sharing/SKILL.md)。
-
----
-
-## 安装*这个*技能（自我示范）
-
-这个技能自己就践行了它宣扬的做法 —— 下面是把它装到你自己的 agent 里的方法。
-
-### 方式 A —— 单个 agent，快速试用
-
-把技能文件夹复制到你在用的那个 agent 目录：
-
-```bash
-# Claude Code（用户级）
-cp -R skill/multi-agent-skill-sharing ~/.claude/skills/
-
-# Codex CLI（用户级）
-cp -R skill/multi-agent-skill-sharing ~/.codex/skills/
-```
-
-### 方式 B —— 让它在一个项目的所有 agent 间共享（推荐）
-
-在你的目标项目里，运行自带的分发脚本。它会把技能铺到每个 agent 的仓库级目录，并且是跨平台的：
-
-```bash
-# 在你的项目根目录下运行
-python3 /path/to/multi-agent-skill-sharing/scripts/distribute.py \
-  --src /path/to/multi-agent-skill-sharing/skill \
-  --dest .
-```
-
-可以先预览（不写入任何文件），或只分发给你实际在用的 agent：
-
-```bash
-# 只打印将要写入的内容，不动磁盘
-python3 .../scripts/distribute.py --src ./skill --dest . --dry-run
-
-# 只铺给 Claude Code + Codex，跳过其余
-python3 .../scripts/distribute.py --src ./skill --dest . --agents claude,codex
-```
-
-`--agents` 可选值：`claude`、`codex`、`agents`、`cline`
-（默认：`claude,codex,agents`）。
-
-然后把新生成的 `.claude/skills`、`.agents/skills`、`.codex/skills`
-目录提交进 Git，技能就能随仓库一起走了。
-
-逐个工具的细节和 Windows 步骤见 [`docs/INSTALL.md`](docs/INSTALL.md)。
+Myco 知道所有这些位置和格式，替你把它们打通。这正是重点：你不该去背这张表 —— App 替你记住。
 
 ---
 
-## 装好之后怎么用
+## 面向贡献者 —— 引擎在幕后
 
-直接把你的情况描述给 agent，比如：
+Myco 的 UI 只是一层很薄的 SwiftUI 外壳，真正干活的是一个小巧的、**纯 Python 标准库**引擎（在 [`engine/`](engine/) 里），App 通过 `Process` 调用它。你平常根本看不到它 —— 但如果你想改 Myco、从源码构建，或者想脚本化地无头调用这些能力，它都在这儿：
 
-> "我在这个仓库里同时用 Codex 和 Claude Code —— 让这个技能两边都能用。"
+| 引擎模块 | 驱动 |
+|----------|------|
+| [`engine/distribute.py`](engine/distribute.py) | 技能扇出（共享 Tab） |
+| [`engine/sync_chats.py`](engine/sync_chats.py) | 历史聚合（历史 Tab） |
+| [`engine/handoff_chat.py`](engine/handoff_chat.py) | 会话接力（接力 Tab） |
+| [`engine/chatsync/`](engine/chatsync/) | 规范化消息模型 + 各 agent reader + 导出器 |
 
-或者直接问那个能触发技能的问题：
-
-> "为什么只有 Claude Code 能用这个技能？"
-
-技能会引导 agent 走完：检测你在用哪些工具 → 把技能分发到正确的目录 → 往 `AGENTS.md` 里写路由说明 → 提醒你 commit。
-
----
-
-## ② 跨 agent 同步 & 接力会话
-
-被隔离的不只是技能 —— 你的**聊天历史**也一样。每个工具都把自己的记录存在各自的地方、用各自的格式：
-
-| Agent | 历史存放位置 | 格式 |
-|-------|-------------|------|
-| **Claude Code** | `~/.claude/projects/**/*.jsonl` | JSONL |
-| **WorkBuddy** | `~/.workbuddy/**` | JSONL |
-| **Codex CLI** | `~/.codex/sessions/**/*.jsonl` | JSONL |
-| **Cursor** | `state.vscdb`（SQLite） | SQLite blob |
-| **Antigravity** | 工作区 SQLite 存储 | SQLite |
-
-两个**只读**工具把它们打通（都是**纯 Python 标准库**，零依赖）：
-
-**`sync_chats.py`** —— 把每个 agent 的本地历史读成一份中性、可搜索的归档，外加一份离线 HTML 时间线：
-
-```bash
-# 把检测到的所有 agent 聚合进 ./chat-archive + 一份合并 HTML 时间线
-python3 scripts/sync_chats.py --out ./chat-archive
-```
-
-**`handoff_chat.py`** —— 把*某一段*对话打包成可直接粘贴的文本，让另一个 agent 在一个**合法的新会话**里接着聊（不伪造 ID、不注入假历史）：
-
-```bash
-# 把某个 Codex 会话变成一段可粘进 Claude Code 的接力文本
-python3 scripts/handoff_chat.py --session <id> --to claude
-```
-
-设计说明与规范化消息模型见
-[`docs/V2_CHAT_SYNC_DESIGN.md`](docs/V2_CHAT_SYNC_DESIGN.md) 和
-[`scripts/README_chatsync.md`](scripts/README_chatsync.md)。
-
----
-
-## ③ Conduit —— 菜单栏 App
-
-<p align="center">
-  <em>one workspace, every agent</em>
-</p>
-
-**Conduit** 是一个原生 macOS 菜单栏应用，把上面所有能力包进一个清爽的 UI —— 共享技能、接力会话、浏览统一历史，全程不用碰命令行。
-
-- **原生、极小** —— SwiftUI + AppKit（`NSStatusItem` 托盘 + `NSPopover`），**仅用 Command Line Tools 就能编译，无需 Xcode**。
-- **只读设计** —— agent 检测与历史读取绝不改动你的数据；SQLite 以 `immutable=1&mode=ro` 打开。
-- **复用 Python 内核** —— UI 只是通过 `Process` 调用同一批 `distribute.py` / `sync_chats.py` / `handoff_chat.py` 脚本。
-
-### 安装（预编译版）
-
-从 [Releases 页面](https://github.com/BreetyGreen/multi-agent-skill-sharing/releases) 下载 `Conduit-x.y.z.dmg`，打开后把 **Conduit.app** 拖进 **Applications**。它是 ad-hoc 签名的，首次启动请用**右键 → 打开**绕过 Gatekeeper。
-
-### 从源码构建
+从源码构建 App（仅需 Command Line Tools，**无需 Xcode**）：
 
 ```bash
 cd app
-./build.sh              # swift build -c release + 组装 Conduit.app + icns + ad-hoc 签名
+./build.sh              # swift build -c release → 组装自包含的 Myco.app
 ./package_dmg.sh        # （可选）产出可分发的 .dmg
-open Conduit.app
+open Myco.app
 ```
 
-完整架构、调试/截图环境变量开关、源码布局见 [`app/README.md`](app/README.md)。
+架构、环境变量开关、源码布局见 [`app/README.md`](app/README.md)。
+Myco 随附并用于分发的那份可移植技能在
+[`skills/multi-agent-skill-sharing/SKILL.md`](skills/multi-agent-skill-sharing/SKILL.md)，
+设计说明在 [`docs/`](docs/)。
 
 ---
 
 ## 仓库结构
 
 ```
-multi-agent-skill-sharing/
+multi-agent-skill-sharing/          (即 Myco 项目)
 ├── README.md
 ├── LICENSE
-├── skill/
-│   └── multi-agent-skill-sharing/
-│       └── SKILL.md          # ① 可移植的技能本体
-├── scripts/
-│   ├── distribute.py         # ① 跨平台技能分发脚本
-│   ├── sync_chats.py         # ② 聚合各 agent 历史 → 归档 + HTML
-│   ├── handoff_chat.py       # ② 打包某段对话做合法接力
-│   └── chatsync/             # ② 规范化模型 + 各 agent reader + 导出器
-├── app/                      # ③ Conduit —— SwiftUI 菜单栏 App（无需 Xcode）
-├── prototype/                # ③ 高保真可交互 HTML 原型
-└── docs/
-    ├── INSTALL.md            # 逐工具安装 + Windows 说明
-    └── V2_CHAT_SYNC_DESIGN.md
+├── app/                      # Myco —— SwiftUI 菜单栏 App（就是产品本体）
+│   ├── Sources/Myco/         #   原生 UI + PythonBridge
+│   ├── build.sh              #   组装自包含的 Myco.app
+│   └── package_dmg.sh        #   产出可安装的 .dmg
+├── engine/                   # Myco 的内部 Python 引擎（纯标准库）
+│   ├── distribute.py         #   技能扇出
+│   ├── sync_chats.py         #   历史聚合 → 归档 + HTML
+│   ├── handoff_chat.py       #   打包某段对话做合法接力
+│   └── chatsync/             #   规范化模型 + reader + 导出器
+├── skills/                   # Myco 随附并分发的 SKILL.md 载荷
+│   └── multi-agent-skill-sharing/SKILL.md
+├── prototype/                # 高保真可交互 HTML 原型
+├── assets/                   # 品牌：logo、wordmark、配色
+└── docs/                     # 安装说明 + 设计文档
 ```
 
+---
 
 ## 同类项目
 
-这个仓库刻意做得很**窄**：它只讲"如何让一份技能在多个 agent 间生效"这套机制。如果你要找的是大量现成技能的目录合集，下面这些优秀项目值得一看：
+Myco 关注的是**把你已经在用的 agent 连起来**，而不是罗列技能。如果你要找的是大量现成技能的合集，下面这些很优秀：
 
 | 项目 | Stars | 是什么 |
 |------|-------|--------|
@@ -218,15 +149,14 @@ multi-agent-skill-sharing/
 | [vercel-labs/skills](https://github.com/vercel-labs/skills) | 6k+ | Vercel 官方技能 + CLI 工具 |
 | [anthropics/skills](https://github.com/anthropics/skills) | — | Anthropic 官方为 Claude Code 出的技能 |
 | [agentskills/agentskills](https://github.com/agentskills/agentskills) | 10k+ | 开放的 **SKILL.md** 规范 / 标准 |
-| [JackyST0/awesome-agent-skills](https://github.com/JackyST0/awesome-agent-skills) | — | 跨平台清单，带一键安装 + 在线搜索 |
 
-> 那些项目告诉你**有哪些**技能可用。这个仓库告诉你**如何**让其中任何一个，在你真正在用的那些工具之间共享、随时切换。
+> 那些项目告诉你**有哪些**技能可用。Myco 把你真正在用的工具连起来，让一份技能 —— 或一段对话 —— 能在它们之间自由流动。
 
 ---
 
 ## 提醒
 
-这些工具的技能发现约定**变化很快**。这里的路径核实于 **2026-07**。如果某个路径不生效，请查阅对应工具自己的文档 —— 也非常欢迎提 PR 帮忙更新这张表。
+这些工具的技能发现约定**变化很快**。Myco 用到的路径核实于 **2026-07**。如果某个路径不生效，请查阅对应工具自己的文档 —— 也非常欢迎提 PR 帮忙更新。
 
 ## 参与贡献
 

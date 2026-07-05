@@ -13,9 +13,9 @@ Thumbs.db
 # WorkBuddy agent workspace (local memory / private notes — not for a public repo)
 .workbuddy/
 
-# Swift / Conduit app build artifacts
+# Swift / Myco app build artifacts
 app/.build/
-app/Conduit.app/
+app/Myco.app/
 app/*.dmg
 app/*.icns
 *.swiftpm

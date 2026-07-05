@@ -7,6 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] — 2026-07-06
+
+**Rebrand to Myco** and reposition the whole project around a single product:
+the Myco menu-bar app. Skill-sharing and chat-sync are no longer standalone
+tools you install separately — they're capabilities *inside* Myco, driven by an
+internal engine the user never has to touch.
+
+### Changed
+- **Renamed the product to `Myco`** ("the mycelial layer for your AI agents").
+  App target, bundle id (`com.myco.app`), tray wordmark, slogan, DMG, work dir
+  (`~/Documents/Myco`) and all `MYCO_*` env vars updated. The old `Conduit`
+  name is gone everywhere in code and docs.
+- **Directory refactor** (history-preserving `git mv`):
+  - `scripts/` → **`engine/`** — reframed as Myco's internal Python engine,
+    not a set of standalone CLIs.
+  - `skill/` → **`skills/`** — the SKILL.md payload Myco ships and distributes.
+  - `app/Sources/Conduit/` → **`app/Sources/Myco/`**.
+- **README (en + zh) fully rewritten** around a single narrative: Myco is a Mac
+  app you download and install; sharing skills / handing off chats / unified
+  history are its built-in features. Download-first, with a "⬇ Download" button;
+  the CLI engine is documented only in a "for contributors" section.
+- `build.sh` / `package_dmg.sh` / `PythonBridge.swift` / CI updated to the new
+  `engine/` + `skills/` paths; app still builds with Command Line Tools only.
+
+### Fixed
+- `validate_skills.py` now scans `skills/` (was hardcoded to the old `skill/`).
+
+
 ## [0.2.0] — 2026-07-05
 
 Grows the project into a **three-layer** cross-agent toolkit and ships a native
@@ -69,6 +97,7 @@ First public release. **Install a skill once, use it across every AI coding agen
 ### Agents covered
 Claude Code · Codex CLI · Cursor · Gemini CLI · Cline
 
-[Unreleased]: https://github.com/BreetyGreen/multi-agent-skill-sharing/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/BreetyGreen/multi-agent-skill-sharing/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/BreetyGreen/multi-agent-skill-sharing/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/BreetyGreen/multi-agent-skill-sharing/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/BreetyGreen/multi-agent-skill-sharing/releases/tag/v0.1.0
