@@ -51,7 +51,7 @@ All of it from the menu bar. No command line, nothing to configure.
     <img src="https://img.shields.io/badge/⬇%20Windows-Setup.exe%20%2F%20.zip-639922?style=for-the-badge" alt="Download for Windows">
   </a>
   &nbsp;
-  <a href="https://github.com/BreetyGreen/Myco/releases/tag/v0.3.1">
+  <a href="https://github.com/BreetyGreen/Myco/releases/latest">
     <img src="https://img.shields.io/badge/⬇%20macOS-.dmg-639922?style=for-the-badge" alt="Download for macOS">
   </a>
 </p>
@@ -73,10 +73,9 @@ SmartScreen may warn on first run (unsigned): **More info → Run anyway**, once
 
 ### macOS
 
-1. Download **`Myco-x.y.z.dmg`** from
-   [v0.3.1](https://github.com/BreetyGreen/Myco/releases/tag/v0.3.1) — the
-   newest release that ships a DMG (a 0.4.0 DMG will be attached once packaged
-   on a Mac; the engine changes don't affect 0.3.1 behavior).
+1. Download **`Myco-x.y.z.dmg`** from the
+   [latest release](https://github.com/BreetyGreen/Myco/releases/latest)
+   (built on GitHub's macOS runners, Apple Silicon).
 2. Open the DMG and drag **`Myco.app`** into **Applications**.
 3. First launch: because the app is ad-hoc signed (not notarized), macOS
    Gatekeeper will hesitate. **Right-click `Myco.app` → Open → Open** once, and

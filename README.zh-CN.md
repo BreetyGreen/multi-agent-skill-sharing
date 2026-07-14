@@ -43,7 +43,7 @@
     <img src="https://img.shields.io/badge/⬇%20Windows-Setup.exe%20%2F%20.zip-639922?style=for-the-badge" alt="下载 Windows 版">
   </a>
   &nbsp;
-  <a href="https://github.com/BreetyGreen/Myco/releases/tag/v0.3.1">
+  <a href="https://github.com/BreetyGreen/Myco/releases/latest">
     <img src="https://img.shields.io/badge/⬇%20macOS-.dmg-639922?style=for-the-badge" alt="下载 macOS 版">
   </a>
 </p>
@@ -62,7 +62,7 @@
 
 ### macOS
 
-1. 从 [v0.3.1](https://github.com/BreetyGreen/Myco/releases/tag/v0.3.1) 下载 **`Myco-x.y.z.dmg`** —— 这是目前最新带 DMG 的版本（0.4.0 的 DMG 待在 Mac 上打包后补传；引擎改动不影响 0.3.1 的行为）。
+1. 从[最新 Release](https://github.com/BreetyGreen/Myco/releases/latest) 下载 **`Myco-x.y.z.dmg`**（由 GitHub 的 macOS 跑机构建，Apple Silicon）。
 2. 打开 DMG，把 **`Myco.app`** 拖进**「应用程序」**。
 3. 首次启动：因为 App 是 ad-hoc 签名（未经 Apple 公证），Gatekeeper 会拦一下。**右键点 `Myco.app` → 打开 → 打开**，一次即可。
 
