@@ -37,15 +37,15 @@ public static class Theme
         r["Line"]     = B(dark ? "#FFFFFF" : "#16171D", dark ? 0.10 : 0.09);
         r["LineSoft"] = B(dark ? "#FFFFFF" : "#16171D", dark ? 0.06 : 0.055);
 
-        // 半透明品牌色染层：让 Win11 acrylic 的背景模糊透出来
-        // （GlassHelper 不可用时 PopupWindow 会把底层回退为同色系不透明）
+        // 轻量品牌色染层：主体色调交给 accent acrylic（GlassHelper），
+        // 这里只补一点绿意和上下明暗（不可用时 PopupWindow 回退为不透明底）
         r["WallGrad"] = Grad(45,
-            dark ? "#B314170C" : "#A6F2F1E9",
-            dark ? "#B3101207" : "#A6EEEFE6",
-            dark ? "#B3121313" : "#A6E9ECE0");
+            dark ? "#2614170C" : "#33F2F1E9",
+            dark ? "#26101207" : "#33EEEFE6",
+            dark ? "#26121313" : "#33E9ECE0");
         r["PanelGrad"] = Grad(90,
-            dark ? "#33181B0F" : "#59FFFFFF",   // 顶部（带透明度的 ARGB）
-            dark ? "#4D0F1108" : "#73FAFBF4");  // 底部
+            dark ? "#14181B0F" : "#26FFFFFF",   // 顶部（带透明度的 ARGB）
+            dark ? "#1F0F1108" : "#33FAFBF4");  // 底部
 
         // 荧光青柠渐变：主按钮 / 首页 hero 卡 / 激活 tab 药丸共用（signature）
         r["BrandGrad"] = Grad(45,
