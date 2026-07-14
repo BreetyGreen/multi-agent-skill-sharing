@@ -13,10 +13,16 @@ from the Windows build. 中文版：[USER-GUIDE.zh-CN.md](USER-GUIDE.zh-CN.md)
 
 ## Install & launch
 
-1. Download **`Myco-win-x.y.z.zip`** from the
-   [latest release](https://github.com/BreetyGreen/Myco/releases/latest).
-2. Unzip anywhere and double-click **`Myco.exe`** — portable, no installer.
-   The .NET runtime and a Python engine are bundled; nothing else to install.
+1. Grab either from the
+   [latest release](https://github.com/BreetyGreen/Myco/releases/latest)
+   (the .NET runtime and a Python engine are bundled in both):
+   - **`Myco-Setup-x.y.z.exe`** (recommended) — standard wizard: per-user
+     install, Start-Menu shortcut, optional start-at-login, uninstall via
+     Settings → Apps
+   - **`Myco-win-x.y.z.zip`** (portable) — unzip anywhere, double-click
+     `Myco.exe`
+2. SmartScreen may warn on first run (unsigned): **More info → Run anyway**,
+   once.
 3. Myco lives in the **system tray** (bottom-right, the stacked-tiles icon):
    - **Left click** — open / dismiss the panel
    - **Right click** — Open · Re-detect · Quit

@@ -54,9 +54,12 @@
 
 ### Windows
 
-1. 从[最新 Release](https://github.com/BreetyGreen/Myco/releases/latest) 下载 **`Myco-win-x.y.z.zip`**。
-2. 解压到任意位置，双击 **`Myco.exe`** —— 无需安装。
-3. Myco 常驻系统托盘（任务栏右下角），点那个三层叠图标即可。
+[最新 Release](https://github.com/BreetyGreen/Myco/releases/latest) 提供两种形式：
+
+- **`Myco-Setup-x.y.z.exe`**（推荐）—— 标准安装向导：按用户安装（无需管理员）、开始菜单快捷方式、可在「设置 → 应用」里卸载。
+- **`Myco-win-x.y.z.zip`**（便携版）—— 解压即用，删掉文件夹即卸载。
+
+装好后 Myco 常驻系统托盘（任务栏右下角三层叠图标）。
 
 > **系统要求：** Windows 10/11。zip 完全自包含 —— .NET 运行时和内嵌 Python 都已打包，不需要装任何其它东西。
 

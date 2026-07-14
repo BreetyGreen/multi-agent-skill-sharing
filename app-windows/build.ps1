@@ -9,9 +9,11 @@
 #
 # 用法：  .\build.ps1                 # 完整包（含内嵌 Python，约 80MB）
 #         .\build.ps1 -NoPython       # 轻量包（要求系统装有 Python 3）
+#         .\build.ps1 -Installer      # 额外编译 Myco-Setup-<version>.exe（需 Inno Setup 6）
 param(
     [string]$Version = "0.4.0",
     [switch]$NoPython,
+    [switch]$Installer,
     [string]$PythonEmbedVersion = "3.12.8"
 )
 $ErrorActionPreference = 'Stop'
@@ -59,6 +61,19 @@ Write-Host "==> [4/4] 压缩 Myco-win-$Version.zip"
 $out = Join-Path $dist "Myco-win-$Version.zip"
 if (Test-Path $out) { Remove-Item $out }
 Compress-Archive "$stage\*" $out
+
+if ($Installer) {
+    Write-Host "==> [5/5] 编译安装程序（Inno Setup）"
+    $iscc = @(
+        "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe",
+        "$env:ProgramFiles\Inno Setup 6\ISCC.exe",
+        "$env:LOCALAPPDATA\Programs\Inno Setup 6\ISCC.exe"
+    ) | Where-Object { Test-Path $_ } | Select-Object -First 1
+    if (-not $iscc) { throw "未找到 Inno Setup 6（winget install JRSoftware.InnoSetup）" }
+    & $iscc /Q "/DMyAppVersion=$Version" "$appDir\installer.iss"
+    if ($LASTEXITCODE -ne 0) { throw "ISCC failed" }
+    Write-Host "    ✓ $dist\Myco-Setup-$Version.exe"
+}
 
 Write-Host ""
 Write-Host "==> 完成: $out"

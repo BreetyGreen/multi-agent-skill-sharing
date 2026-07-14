@@ -12,6 +12,7 @@
     <AssemblyName>Myco</AssemblyName>
     <RootNamespace>Myco</RootNamespace>
     <Version>0.4.0</Version>
+    <ApplicationIcon>app.ico</ApplicationIcon>
   </PropertyGroup>
 
   <!-- WinForms 只用于 NotifyIcon（App.xaml.cs 里显式别名引用），

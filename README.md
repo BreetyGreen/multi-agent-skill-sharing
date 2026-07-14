@@ -67,10 +67,14 @@ Click it and everything is one panel away.
 
 ### Windows
 
-1. Download **`Myco-win-x.y.z.zip`** from the
-   [latest release](https://github.com/BreetyGreen/Myco/releases/latest).
-2. Unzip anywhere and double-click **`Myco.exe`** — no installer.
-3. Myco lives in the system tray (bottom-right). Click the stacked-tiles icon.
+Two options on the [latest release](https://github.com/BreetyGreen/Myco/releases/latest):
+
+- **`Myco-Setup-x.y.z.exe`** (recommended) — a standard install wizard:
+  per-user (no admin), Start-Menu shortcut, uninstall via Settings → Apps.
+- **`Myco-win-x.y.z.zip`** (portable) — unzip anywhere, double-click
+  `Myco.exe`, delete the folder to remove.
+
+Either way, Myco lives in the system tray (bottom-right stacked-tiles icon).
 
 > **Requirements:** Windows 10/11. The zip is fully self-contained — .NET
 > runtime and an embedded Python are bundled; nothing else to install.

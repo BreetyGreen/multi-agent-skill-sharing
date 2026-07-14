@@ -21,6 +21,13 @@ acrylic glass on both themes.
   in-box); builds with the .NET 8 SDK only. `build.ps1` produces a fully
   self-contained green zip (`Myco.exe` + engine + skills + embedded
   python.org Python) — unzip and double-click, nothing to install.
+- **Windows installer (`Myco-Setup-x.y.z.exe`)** — a standard Inno Setup
+  wizard as an alternative to the portable zip: per-user install (no admin,
+  `%LOCALAPPDATA%\Programs\Myco`), Start-Menu shortcut, optional desktop
+  icon / start-at-login, and a proper entry in Settings → Apps for
+  uninstall (user data in `Documents\Myco` is never touched). Built via
+  `build.ps1 -Installer`; the exe also gained a real icon (`app.ico` from
+  the brand logo).
 - **`engine/agent_status.py`** — agent detection (installs + session counts)
   as a single engine implementation driven by `agents.json`, with `--json`
   for app frontends and a human-readable table for the CLI. The Windows app
