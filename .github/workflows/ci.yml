@@ -45,3 +45,18 @@ jobs:
         working-directory: app
         run: swift build -c release
 
+  build-app-windows:
+    name: Build Myco Windows tray app
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.x"
+
+      - name: Build (release)
+        run: dotnet build app-windows/Myco.csproj -c Release --nologo
+

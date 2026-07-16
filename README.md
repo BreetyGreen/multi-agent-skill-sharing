@@ -8,15 +8,16 @@
 <h1 align="center">Myco</h1>
 
 <p align="center">
-  <em>The mycelial layer for your AI agents — one Mac app that shares skills,
-  hands off conversations, and unifies history across every coding agent you run.</em>
+  <em>The mycelial layer for your AI agents — a native tray app for macOS &amp; Windows
+  that shares skills, hands off conversations, and unifies history across every
+  coding agent you run.</em>
 </p>
 
 <p align="center">
   <a href="https://github.com/BreetyGreen/Myco/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/BreetyGreen/Myco/ci.yml?branch=master&label=CI&color=3B6D11" alt="CI status"></a>
   <a href="https://github.com/BreetyGreen/Myco/releases/latest"><img src="https://img.shields.io/github/v/release/BreetyGreen/Myco?color=639922&label=download" alt="Latest release"></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/BreetyGreen/Myco?color=3B6D11" alt="MIT License"></a>
-  <img src="https://img.shields.io/badge/platform-macOS%2013%2B-639922" alt="macOS 13+">
+  <img src="https://img.shields.io/badge/platform-macOS%2013%2B%20·%20Windows%2010%2F11-639922" alt="macOS 13+ · Windows 10/11">
   <img src="https://img.shields.io/badge/agents-5%20supported-97C459" alt="5 agents supported">
 </p>
 
@@ -30,8 +31,8 @@ nutrients and signals. Your AI coding agents are that forest: **Claude Code**,
 **WorkBuddy**, **Codex CLI**, **Cursor**, **Antigravity** — each powerful, each
 completely walled off from the others.
 
-**Myco is the mycelium.** A single native macOS menu-bar app that quietly
-connects your agents so they can share what they know:
+**Myco is the mycelium.** A native menu-bar / tray app (macOS &amp; Windows) that
+quietly connects your agents so they can share what they know:
 
 - 🟢 **Share skills** — write one `SKILL.md` and fan it out to every agent's
   repo directory, so a skill you teach one tool works in all of them.
@@ -41,6 +42,13 @@ connects your agents so they can share what they know:
   searchable, offline timeline you can browse and back up.
 
 All of it from the menu bar. No command line, nothing to configure.
+
+<p align="center">
+  <img src="https://cdn.jsdelivr.net/gh/BreetyGreen/Myco@master/docs/images/windows-home.png" alt="Home — agents at a glance" width="330">
+  &nbsp;&nbsp;
+  <img src="https://cdn.jsdelivr.net/gh/BreetyGreen/Myco@master/docs/images/windows-relay.png" alt="Relay — hand a chat to another agent" width="330">
+</p>
+<p align="center"><sub>Home: every agent at a glance &nbsp;·&nbsp; Relay: pick any conversation, continue it in another tool</sub></p>
 
 ---
 

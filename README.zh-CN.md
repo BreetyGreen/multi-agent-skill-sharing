@@ -8,15 +8,15 @@
 <h1 align="center">Myco</h1>
 
 <p align="center">
-  <em>为你的 AI agent 编织的菌丝网络 —— 一个 Mac App，在你所有编程 agent 之间
-  共享技能、接力对话、打通历史。</em>
+  <em>为你的 AI agent 编织的菌丝网络 —— macOS 与 Windows 原生托盘应用，
+  在你所有编程 agent 之间共享技能、接力对话、打通历史。</em>
 </p>
 
 <p align="center">
   <a href="https://github.com/BreetyGreen/Myco/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/BreetyGreen/Myco/ci.yml?branch=master&label=CI&color=3B6D11" alt="CI status"></a>
   <a href="https://github.com/BreetyGreen/Myco/releases/latest"><img src="https://img.shields.io/github/v/release/BreetyGreen/Myco?color=639922&label=download" alt="Latest release"></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/BreetyGreen/Myco?color=3B6D11" alt="MIT License"></a>
-  <img src="https://img.shields.io/badge/platform-macOS%2013%2B-639922" alt="macOS 13+">
+  <img src="https://img.shields.io/badge/platform-macOS%2013%2B%20·%20Windows%2010%2F11-639922" alt="macOS 13+ · Windows 10/11">
   <img src="https://img.shields.io/badge/agents-5%20supported-97C459" alt="5 agents supported">
 </p>
 
@@ -26,13 +26,20 @@
 
 蘑菇只是果实，真正的生命体是地下的**菌丝网络（mycelium）**—— 一张活的网，把整片森林连在一起，让每棵树共享养分与信号。你的 AI 编程 agent 就是这片森林：**Claude Code**、**WorkBuddy**、**Codex CLI**、**Cursor**、**Antigravity** —— 每个都很强，却彼此完全隔绝。
 
-**Myco 就是那张菌丝网。** 一个原生 macOS 菜单栏 App，悄悄把你的 agent 连起来，让它们能共享彼此所知：
+**Myco 就是那张菌丝网。** 一个原生菜单栏/托盘应用（macOS 与 Windows），悄悄把你的 agent 连起来，让它们能共享彼此所知：
 
 - 🟢 **共享技能** —— 写一份 `SKILL.md`，铺进每个 agent 的仓库目录，你教会一个工具的技能，其它工具也都能用。
 - 🔵 **接力对话** —— 把某个 agent 里的一段对话，接到另一个 agent 里*用它自发的合法新会话*继续（不伪造 ID、不注入假历史）。
 - 🟣 **打通历史** —— 把每个 agent 的本地记录读成一份中性、可搜索、可离线浏览与备份的统一时间线。
 
 全部都在菜单栏里完成。不用命令行，无需任何配置。
+
+<p align="center">
+  <img src="https://cdn.jsdelivr.net/gh/BreetyGreen/Myco@master/docs/images/windows-home.png" alt="总览 — 本机 agent 一目了然" width="330">
+  &nbsp;&nbsp;
+  <img src="https://cdn.jsdelivr.net/gh/BreetyGreen/Myco@master/docs/images/windows-relay.png" alt="接力 — 把对话交给另一个 agent" width="330">
+</p>
+<p align="center"><sub>总览：本机 agent 一目了然 &nbsp;·&nbsp; 接力：任选一段对话，换个工具接着聊</sub></p>
 
 ---
 
